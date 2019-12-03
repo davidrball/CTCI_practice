@@ -128,7 +128,7 @@ def compress_string(input_string):
         return input_string
 
 
-#1.7 rotate matrix, first take, use np.rot90
+#1.7 rotate matrix, first take, use np.rot90.  Didn't do it in place here though
 def rotate_matrix(input_array):
     myshape = np.shape(input_array)
     if myshape[0] != myshape[1]:
@@ -142,10 +142,15 @@ def rotate_matrix(input_array):
             new_array[i][j] = input_array[N-j-1][i]
     return new_array
 
-testarr = np.array([[1, 2, 3, 4, 5],
-            [6, 7, 8, 9, 10],
-            [11, 12, 13, 14, 15],
-            [16, 17, 18, 19, 20],
-            [21, 22, 23, 24, 25]])
-print(testarr)
-print(rotate_matrix(testarr))
+#to do this in place, consider basically "shells" of the array, 1 element thick, save one side, rotate through the rest, then the remaining side is equal to the side you first saved
+#try implementing this tomorrow!
+
+def zero_matrix(input_array):
+    myshape = np.shape(input_array)
+    for i in range(myshape[0]):
+        for j in range(myshape[1]):
+            if input_array[i][j] == 0:
+                input_array[i,:] *= 0 #zero out, in a numpy type way, need to do loop if we can't use numpy
+                input_array[:,j] *= 0
+                break #break out of j loop once we do this, since they're already 0
+    return input_array
