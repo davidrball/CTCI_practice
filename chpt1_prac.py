@@ -154,3 +154,5 @@ def zero_matrix(input_array):
                 input_array[:,j] *= 0
                 break #break out of j loop once we do this, since they're already 0
     return input_array
+
+#do rotate string problem later, a while after looking at soln
